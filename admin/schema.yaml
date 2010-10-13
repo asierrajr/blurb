@@ -1,0 +1,55 @@
+---
+blurb: 
+  version: 0.0.0
+  required: false
+  requirements: 
+    liberty:
+      min: 2.1.5    libertygraph:
+      min: 0.0.0  description: Manages text blurbs on various pages
+  license: 
+    name: LGPL
+    description: Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. 
+    url: http://www.gnu.org/copyleft/lesser.html
+  homeable: true
+  pluggable:  
+  tables: 
+    'blurb_data' => "
+		blurb_id I4 PRIMARY,
+		content_id I4 NOTNULL, 
+        blurb_guid C(32) NOTNULL UNIQUE
+        CONSTRAINT '
+        , CONSTRAINT `blurb_content_ref` FOREIGN KEY (`content_id`) REFERENCES `liberty_content` (`content_id`)
+		'
+	",
+  constraints: 
+  indexes: 
+  sequences: 
+    blurb_data_id_seq: {start: 1}
+  preferences: 
+    blurb_default_ordering: blurb_id_desc
+    blurb_list_title: 'y'
+  defaults: 
+  permissions: 
+    p_blurb_admin:
+      description: Can admin the blurb package
+      level: admin
+    p_blurb_view:
+      description: Can view the blurb package
+      level: basic
+    p_blurb_create:
+      description:  Can create a blurb entry
+      level: admin
+    p_blurb_view:
+      description:  Can view blurb entries
+      level: basic
+    p_blurb_update:
+      description: Can update any blurb entry
+      level: admin
+    p_blurb_expunge:
+      description: Can delete any blurb entry
+      level: admin
+    p_blurb_admin:
+      description: Can admin any blurb entry
+      level: admin
+  contenttypes:
+    BitBlurb: BitBlurb.php

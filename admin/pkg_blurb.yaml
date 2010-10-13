@@ -1,0 +1,48 @@
+---
+package:
+  package: blurb
+  description: Manages text blurbs on various pages
+  copyright:
+    - {year: 2010, name: Tekimaki LLC, contact: http://tekimaki.com}
+    - {year: 2010, name: Will James, contact: will@tekimaki.com}
+  license:
+    name: LGPL
+    description: Licensed under the GNU LESSER GENERAL PUBLIC LICENSE.
+    url: http://www.gnu.org/copyleft/lesser.html 
+  version: 0.1
+  requirements:
+    liberty: {min: 2.1.5}
+    libertygraph: {min: 0.0.0}
+  maintainer_url: http://www.tekimaki.com
+  homeable: false 
+  pluggable: false
+  types:
+    blurb:
+      content_name: Blurb
+      content_name_plural: Blurbs
+      description: A class which represents a blurb.
+      base_class: LibertyContent
+      class_name: BitBlurb
+      base_package: liberty
+      maintainer_url: http://www.tekimaki.com
+      attachments: false
+      rewrite_path: blurb
+      lookup_by: [blurb_guid]
+      permissions:
+        default: {create: admin, update: admin} 
+      fields:
+        title:
+          name: Blurb Name
+        data:
+          name: About
+          help: A statement about the blurb.
+        summary:
+          name: Description
+          help: About this blurb
+        blurb_guid:
+          name: Blurb Guid
+          help: Unique guid for referencing/defining in the templates
+          schema: {type: C(32), notnull: true, unique: true}
+          validator: {type: string, required: true, max_length: 32}
+          look_up: true
+          look_up_key: blurb_guid
