@@ -568,10 +568,12 @@ class BitBlurb extends LibertyContent {
 	}
 	
 	/**
-	 * gets id by look up fields
+	 * getIdByField
+	 * get id by type fields
 	 */
-	function getIdByLookUp( $pParamHash ) {
-		return $this->mDb->getOne( "SELECT blurb_id FROM `".BIT_DB_PREFIX."blurb_data` blurb LEFT JOIN `".BIT_DB_PREFIX."liberty_content` lc ON (blurb.`content_id` = lc.`content_id`) WHERE blurb.`".key($pParamHash)."` = ?", array($pParamHash) );
+	public static function getIdByField( $pKey, $pValue ) {
+		global $gBitSystem;
+		return $gBitSystem->mDb->getOne( "SELECT blurb_id FROM `".BIT_DB_PREFIX."blurb_data` blurb LEFT JOIN `".BIT_DB_PREFIX."liberty_content` lc ON (blurb.`content_id` = lc.`content_id`) WHERE blurb.`".$pKey."` = ?", $pValue );
 	}
 	
 	// Getters for reference column options - return associative arrays formatted for generating html select inputs

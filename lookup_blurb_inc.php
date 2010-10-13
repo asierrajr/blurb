@@ -31,10 +31,8 @@ require_once( BLURB_PKG_PATH.'BitBlurb.php');
 if( empty( $gContent ) || !is_object( $gContent ) || !$gContent->isValid() ) {
 	// if someone gives us a blurb_guid we try to find it
 	if( !empty( $_REQUEST['blurb_guid'] ) ){
-		$gContent = new BitBlurb();
-		$_REQUEST['blurb_id'] = $gContent->getIdByLookUp( array('blurb_guid'=>$_REQUEST['blurb_guid']));//$gBitDb->getOne( "SELECT blurb_id FROM `".BIT_DB_PREFIX."blurb_data` blurb LEFT JOIN `".BIT_DB_PREFIX."liberty_content` lc ON (blurb.`content_id` = lc.`content_id`) WHERE blurb.`blurb_guid` = ?", array($_REQUEST['blurb_guid']) );
-		if( empty( $_REQUEST['blurb_id'] ) ) {
-		  $gBitSystem->fatalError(tra('No blurb found with the name: ').$_REQUEST['blurb_guid']);
+		if( !($_REQUEST['blurb_id'] = BitBlurb::getIdByLookUp( blurb_guid, $_REQUEST['blurb_guid'] ))){
+			$gBitSystem->fatalError(tra('No blurb found with the name: ').$_REQUEST['blurb_guid']);
 		}
 	}
 
