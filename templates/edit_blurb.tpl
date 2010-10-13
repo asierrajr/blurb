@@ -68,8 +68,8 @@
 	{formlabel label="Blurb Guid" for="blurb_guid"}
 	{forminput}
 
-	        	    <input type="text" id="blurb_guid" name="blurb[blurb_guid]" value="{$gContent->getField("blurb_guid")}" />
-    
+	        	    <input type="text" id="blurb_guid" name="blurb[blurb_guid]" value="{if $smarty.request.blurb_guid}{$smarty.request.blurb_guid}{else}{$gContent->getField("blurb_guid")}{/if}" {if $smarty.request.blurb_guid || $smarty.request.blurb_guid_readonly}READONLY{/if} />
+					{if $smarty.request.blurb_guid}<input type="hidden" name="blurb_guid_readonly" value="true">{/if}
 {required}
 	{formhelp note="Unique guid for referencing/defining in the templates"}
 	{/forminput}
