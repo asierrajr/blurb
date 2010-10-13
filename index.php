@@ -44,9 +44,6 @@ $typeFields = array(
 	"blurb_blurb_guid",
 	);	
 
-if(!empty($_REQUEST['blurb_guid'])){
-	$_REQUEST['blurb_blurb_guid'] = $_REQUEST['blurb_guid'];
-}
 	
 	
 // If a content type key id is requested load it up

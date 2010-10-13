@@ -30,9 +30,9 @@ require_once( BLURB_PKG_PATH.'BitBlurb.php');
 // if we already have a gContent, we assume someone else created it for us, and has properly loaded everything up.
 if( empty( $gContent ) || !is_object( $gContent ) || !$gContent->isValid() ) {
 	// if someone gives us a blurb_guid we try to find it
-	if( !empty( $_REQUEST['blurb_guid'] ) ){
-		if( !($_REQUEST['blurb_id'] = BitBlurb::getIdByLookUp( blurb_guid, $_REQUEST['blurb_guid'] ))){
-			$gBitSystem->fatalError(tra('No blurb found with the name: ').$_REQUEST['blurb_guid']);
+	if( !empty( $_REQUEST['blurb_blurb_guid'] ) ){
+		if( !($_REQUEST['blurb_id'] = BitBlurb::getIdByField( 'blurb_guid', $_REQUEST['blurb_blurb_guid'] ))){
+			$gBitSystem->fatalError(tra('No blurb found with the name: ').$_REQUEST['blurb_blurb_guid']);
 		}
 	}
 
