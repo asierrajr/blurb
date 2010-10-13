@@ -1,0 +1,34 @@
+ # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+ # $Header: $
+ #
+ # Copyright (c) 2010 Tekimaki LLC http://tekimaki.com
+ # Copyright (c) 2010 Will James will@tekimaki.com
+ #
+ # All Rights Reserved. See below for details and a complete list of authors.
+ # Licensed under the GNU LESSER GENERAL PUBLIC LICENSE. See http://www.gnu.org/copyleft/lesser.html for details #
+ # $Id: $
+ # @package blurb
+ # @subpackage htaccess
+ # =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+<IfModule mod_rewrite.c>
+    RewriteEngine  on
+    # Uncomment this if mod_rewrites are not working for you. some hosting services have cranky mod_rewrite
+    #RewriteBase /blurb/
+
+    RewriteCond %{SCRIPT_FILENAME}              -f [OR]
+    RewriteCond %{SCRIPT_FILENAME}/index.php    -f
+
+
+    # Rules for the type blurb
+    RewriteRule    ^blurb$ list_blurb.php [L,QSA]
+    RewriteRule    ^blurb/([0-9]+)$  index.php?blurb_id=$1  [L,QSA]
+    RewriteRule    ^blurb/([0-9]+)/([a-zA-Z0-9_-]+)$  index.php?blurb_id=$1&section=$2  [L,QSA]
+    RewriteRule    ^blurb/edit/([0-9]+)$  edit_blurb.php?blurb_id=$1  [L,QSA]
+    RewriteRule    ^blurb/delete/([0-9]+)$  remove_blurb.php?blurb_id=$1  [L,QSA]
+
+    # =-=- CUSTOM BEGIN: htaccess -=-= #
+
+    # =-=- CUSTOM END: htaccess -=-= #
+
+
+</IfModule>

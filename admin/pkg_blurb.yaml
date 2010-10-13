@@ -12,7 +12,6 @@ package:
   version: 0.1
   requirements:
     liberty: {min: 2.1.5}
-    libertygraph: {min: 0.0.0}
   maintainer_url: http://www.tekimaki.com
   homeable: false 
   pluggable: false

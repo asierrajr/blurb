@@ -28,7 +28,6 @@ global $gBitSystem;
 // Requirements
 $gBitSystem->registerRequirements( BLURB_PKG_NAME, array(
 	'liberty' => array( 'min' => '2.1.5', ),
-	'libertygraph' => array( 'min' => '0.0.0', ),
 ));
 
 $gBitSystem->registerPackageInfo( BLURB_PKG_NAME, array(
