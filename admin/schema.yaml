@@ -3,7 +3,8 @@ blurb:
   version: 0.0.0
   required: false
   requirements: 
-    liberty: min: 2.1.5 
+    liberty:
+      min: 2.1.5 
   description: Manages text blurbs on various pages
   license: 
     name: LGPL
@@ -13,12 +14,12 @@ blurb:
   pluggable:  
   tables: 
     blurb_data: |
-		blurb_id I4 PRIMARY,
-		content_id I4 NOTNULL, 
+        blurb_id I4 PRIMARY,
+        content_id I4 NOTNULL, 
         blurb_guid C(32) NOTNULL UNIQUE
         CONSTRAINT '
         , CONSTRAINT `blurb_content_ref` FOREIGN KEY (`content_id`) REFERENCES `liberty_content` (`content_id`)
-		'
+        '
   constraints: 
   indexes: 
   sequences: 
