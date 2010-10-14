@@ -80,8 +80,8 @@
 
 
 						<div class="row submit">
-							<input type="submit" name="preview" value="{tr}Preview{/tr}" />
-							<input type="submit" name="save_blurb" value="{tr}Save{/tr}" />
+							<input class="button" type="submit" name="preview" value="{tr}Preview{/tr}" />
+							<input class="button" type="submit" name="save_blurb" value="{tr}Save{/tr}" />
 						</div>
 					{/legend}
 				{/jstab}

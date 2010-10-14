@@ -36,7 +36,7 @@
 					{/foreach}
 				{/legend}
 				<div class="row submit">
-					<input type="submit" name="blurb_settings" value="{tr}Change preferences{/tr}" />
+					<input class="button" type="submit" name="blurb_settings" value="{tr}Change preferences{/tr}" />
 				</div>
 			{/jstab}
 {* End List Settings *}
