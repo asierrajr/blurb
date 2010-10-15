@@ -285,7 +285,7 @@ class BitBlurb extends LibertyContent {
 		if( !empty( $pParamHash['blurb']['title'] ) ) {
 			$pParamHash['blurb']['content_store']['title'] = substr( $pParamHash['blurb']['title'], 0, 160 );
 		} else if( empty( $pParamHash['blurb']['title'] ) ) { // else is error as must have title
-			$this->mErrors['title'] = tra('You must enter a title for this').' $this->getContentTypeName().';
+			$this->mErrors['title'] = tra('You must enter a title for this '). $this->getContentTypeName();
 		}
 
 		// collapse the hash that is passed to parent class so that service data is passed through properly - need to do so before verify service call below
