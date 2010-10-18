@@ -237,7 +237,7 @@ class BitBlurb extends LibertyContent {
 			$this->mDb->CompleteTrans();
 			$this->load();
 		} else {
-			$this->mErrors['store'] = tra('Failed to save this').' blurb.';
+			$this->mErrors['store'] = tra('Failed to save this').' '.$this->getContentTypeName();
 		}
 		// Restore previous state for user abort
 		ignore_user_abort($abort);
@@ -285,7 +285,7 @@ class BitBlurb extends LibertyContent {
 		if( !empty( $pParamHash['blurb']['title'] ) ) {
 			$pParamHash['blurb']['content_store']['title'] = substr( $pParamHash['blurb']['title'], 0, 160 );
 		} else if( empty( $pParamHash['blurb']['title'] ) ) { // else is error as must have title
-			$this->mErrors['title'] = tra('You must enter a title for this').' $this->getContentTypeName().';
+			$this->mErrors['title'] = tra('You must enter a title for this').' '.$this->getContentTypeName();
 		}
 
 		// collapse the hash that is passed to parent class so that service data is passed through properly - need to do so before verify service call below
@@ -510,11 +510,19 @@ class BitBlurb extends LibertyContent {
 		if (empty($this->mVerification['blurb_data'])) {
 
 	 		/* Validation for title */
-	$this->mVerification['blurb_data']['null']['title'] = TRUE;
+			$this->mVerification['blurb_data']['string']['title'] = array(
+				'name' => 'Title',
+				'required' => '1',
+				'max_length' => '160'
+			);
 	 		/* Validation for data */
-	$this->mVerification['blurb_data']['null']['data'] = TRUE;
+			$this->mVerification['blurb_data']['string']['data'] = array(
+				'name' => 'Data',
+			);
 	 		/* Validation for summary */
-	$this->mVerification['blurb_data']['null']['summary'] = TRUE;
+			$this->mVerification['blurb_data']['string']['summary'] = array(
+				'name' => 'Summary',
+			);
 	 		/* Validation for blurb_guid */
 			$this->mVerification['blurb_data']['string']['blurb_guid'] = array(
 				'name' => 'Blurb Guid',
